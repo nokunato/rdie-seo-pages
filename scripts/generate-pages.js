@@ -59,7 +59,7 @@ records.forEach((record, index) => {
       ${relatedLinks}
     </ul>
 
-    <a href="/" class="back-link">← Back to Homepage</a>
+    <a href="https://www.removeduplicatesinexcel.com" class="back-link">← Back to Homepage</a>
   </body>
 </html>`;
 
