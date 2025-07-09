@@ -1,38 +1,47 @@
-// scripts/generate-pages.js
 import fs from 'fs';
 import path from 'path';
 import { parse } from 'csv-parse/sync';
 
-const csvPath = './data/pages.csv'; // Make sure this file exists
-const outputDir = './pages'; // This is where we'll save the HTML files
+const csvPath = './Data/pages.csv'; // Updated based on your screenshot
+const outputDir = './seo'; // Save HTML pages here
 
-// Read and parse CSV
-const csv = fs.readFileSync(csvPath);
-const records = parse(csv, {
+// Ensure output directory exists
+if (!fs.existsSync(outputDir)) {
+  fs.mkdirSync(outputDir);
+}
+
+// Read and parse the CSV file
+const csvBuffer = fs.readFileSync(csvPath, 'utf8');
+const records = parse(csvBuffer, {
   columns: true,
   skip_empty_lines: true
 });
 
-if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir);
-
+// Loop through each row and generate HTML
 records.forEach((row) => {
-  const { slug, title, meta_description, content } = row;
+  const slug = row.slug?.trim();
+  const title = row.title?.trim() || 'Remove Duplicates in Excel';
+  const metaDesc = row.meta_desc?.trim() || '';
+  const htmlContent = row.html_content?.trim() || '<p>Coming soon...</p>';
 
   const html = `<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>${title}</title>
-    <meta name="description" content="${meta_description}" />
+    <meta name="description" content="${metaDesc}" />
   </head>
   <body>
-    <h1>${title}</h1>
-    <p>${content}</p>
+    ${htmlContent}
+    <br />
     <a href="/">← Back to Homepage</a>
   </body>
 </html>`;
 
-  fs.writeFileSync(path.join(outputDir, `${slug}.html`), html);
+  const outputPath = path.join(outputDir, `${slug}.html`);
+  fs.writeFileSync(outputPath, html);
+  console.log(`✅ Created: ${slug}.html`);
 });
 
-console.log("✅ Pages generated successfully.");
+console.log('🎉 All pages generated successfully!');
