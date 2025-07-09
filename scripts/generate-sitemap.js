@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 
-const baseUrl = 'https://removeduplicatesinexcel.com/seo';
+const baseUrl = 'https://seo.removeduplicatesinexcel.com/seo';
 const seoFolder = './seo';
 const outputFile = './sitemap.xml';
 
