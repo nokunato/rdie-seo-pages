@@ -59,7 +59,7 @@ records.forEach((record, index) => {
       ${relatedLinks}
     </ul>
 
-    <a class="back-link" href="/">← Back to Homepage</a>
+    <a href="/" class="back-link">← Back to Homepage</a>
   </body>
 </html>`;
 
