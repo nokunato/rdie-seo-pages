@@ -3,7 +3,7 @@ import path from 'path';
 import { parse } from 'csv-parse/sync';
 
 // Paths
-const csvFilePath = path.resolve('Data', 'page.csv'); // adjust if different
+const csvFilePath = path.resolve('Data', 'pages.csv'); // adjust if different
 const outputDir = path.resolve('seo');
 
 // Step 1: Read CSV file
