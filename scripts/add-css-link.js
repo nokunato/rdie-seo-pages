@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const dirPath = path.join(__dirname, '../public/seo'); // adjust if needed
+const dirPath = path.join(__dirname, '../public/go'); // adjust if needed
 const linkTag = '<link rel="stylesheet" href="/css/style.css" />';
 
 fs.readdirSync(dirPath).forEach(file => {
