@@ -1,7 +1,13 @@
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-const dirPath = path.join(__dirname, '../public/go'); // adjust if needed
+// ⬇️ Needed because __dirname doesn't exist in ES modules
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+// 👇 Adjust path if your HTML files are elsewhere
+const dirPath = path.join(__dirname, '../public/go');
 const linkTag = '<link rel="stylesheet" href="/css/style.css" />';
 
 fs.readdirSync(dirPath).forEach(file => {
@@ -20,3 +26,4 @@ fs.readdirSync(dirPath).forEach(file => {
     }
   }
 });
+
